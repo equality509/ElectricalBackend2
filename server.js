@@ -25,14 +25,14 @@ mongoose.connect(DATABASE_URL, {
 ///////////////////////////////
 // MODELS
 ////////////////////////////////
-const ProjectsSchema = new mongoose.Schema({
+const CheeseSchema = new mongoose.Schema({
     name: String,
     image: String,
     countryOfOrigin: String,
   });
-  
-  const Project = mongoose.model("Project", ProjectsSchema);
-  
+
+  const Cheese = mongoose.model("Cheese", CheeseSchema);
+
   ///////////////////////////////
   // MiddleWare
   ////////////////////////////////
@@ -53,10 +53,10 @@ app.get("/", (req, res) => {
 
 //PEOPLE INDEX ROUTE
 
-app.get("/projects", async (req, res) => {
+app.get("/cheese", async (req, res) => {
     try {
         //send all people
-        res.json(await Project.find({}));
+        res.json(await Cheese.find({}));
     } catch (error) {
         //send error
         res.status(400).json(error);
@@ -64,34 +64,34 @@ app.get("/projects", async (req, res) => {
     });
 
 // PEOPLE CREATE ROUTE
-app.post("/projects", async (req, res) => {
+app.post("/cheese", async (req, res) => {
     try {
       // send all people
-      res.json(await Project.create(req.body));
+      res.json(await Cheese.create(req.body));
     } catch (error) {
       //send error
       res.status(400).json(error);
     }
   });
-  
+
 // PEOPLE Update ROUTE
-app.put("/projects/:id", async (req, res) => {
+app.put("/cheese/:id", async (req, res) => {
     try {
       // send all people
       res.json(
-        await Project.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        await Cheese.findByIdAndUpdate(req.params.id, req.body, { new: true })
       );
     } catch (error) {
       //send error
       res.status(400).json(error);
     }
   });
-  
+
   // PEOPLE Delete ROUTE
-  app.delete("/projects/:id", async (req, res) => {
+  app.delete("/cheese/:id", async (req, res) => {
     try {
       // send all people
-      res.json(await Project.findByIdAndRemove(req.params.id));
+      res.json(await Cheese.findByIdAndRemove(req.params.id));
     } catch (error) {
       //send error
       res.status(400).json(error);
@@ -99,10 +99,10 @@ app.put("/projects/:id", async (req, res) => {
   });
 
   // PEOPLE INDEX ROUTE
-app.get("/projects/:id", async (req, res) => {
+app.get("/cheese/:id", async (req, res) => {
     try {
       // send all people
-      res.json(await Project.findById(req.params.id));
+      res.json(await Cheese.findById(req.params.id));
     } catch (error) {
       //send error
       res.status(400).json(error);
