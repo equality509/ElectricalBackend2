@@ -26,9 +26,10 @@ mongoose.connect(DATABASE_URL, {
 // MODELS
 ////////////////////////////////
 const ProjectSchema = new mongoose.Schema({
-    name: String,
-    image: String,
-    countryOfOrigin: String,
+  projectName: String,
+  location: String,
+  numberOfWorkers: Number,
+  manager: String,
   });
 
   const Project = mongoose.model("Project", ProjectSchema);
